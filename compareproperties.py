@@ -1,4 +1,5 @@
 import string
+import sys
 
 def get_properties(file):
     """
@@ -14,11 +15,15 @@ def get_properties(file):
                 new_xs.append(xs[x])  
 
     new_xs.sort()
-    g = open("clean_{0}".format(file), "w")
+    a = "clean_{0}".format(file)
+    
+    g = open(a, "w")
 	
     for v in new_xs:
         g.write(v)
     g.close()
+
+    return a
 	
 
 def removevalues(file):
@@ -41,11 +46,15 @@ def removevalues(file):
                     new_xs.append(newstr)
                 break
     new_xs.sort()
-    g = open("stripped_{0}".format(file), "w")
+
+    a = "stripped_{0}".format(file)
+    g = open(a, "w")
 	
     for v in new_xs:
         g.write(v)
     g.close()
+
+    return a
     
 def comparelists(filea, fileb):
     """ Return a set of values missing in files """
@@ -101,23 +110,22 @@ def comparelists(filea, fileb):
 	
 # Open first file
 # Create list of lines, skipping comments, sorted
-get_properties("messages_fr_FR.txt")
+
 
 # Iterate on list and remove everything after the equals
-removevalues("clean_messages_fr_FR.txt")
+
 
 # Open second file
-# Create list of lines, skipping comments, sorted 
+# Create list of lines, skipping comments, sorted
 
-get_properties("messages_zh_CN.txt")
 
 # Iterate on list and remove everything after the equals	
 
-removevalues("clean_messages_zh_CN.txt")
+
 
 # Compare two lists, write to file items in A not B
 # Compare two lists, write to file items in B not A	
 	
-comparelists("stripped_clean_messages_fr_FR.txt", "stripped_clean_messages_zh_CN.txt")
+comparelists(removevalues(get_properties(sys.argv[1])), removevalues(get_properties(sys.argv[2])))
 	
 	
