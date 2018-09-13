@@ -1,0 +1,7 @@
+Entries from Quickbooks missing: 
+('3/15/18', 'Daily Muse Inc', '940', '0')
+('6/10/18', 'Daily Muse Inc', '950', '0')
+
+Entries from BrokerWolf missing: 
+('3/15/18', 'Daily Muse Inc', '950', '0')
+('6/10/18', 'Daily Muse Inc', '940', '0')
